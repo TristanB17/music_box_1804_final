@@ -29,11 +29,13 @@ describe 'a user' do
       song_genre_4 = SongGenre.create(song_id: 1, genre_id: 2)
       song_genre_2 = SongGenre.create(song_id: 2, genre_id: 1)
       song_genre_3 = SongGenre.create(song_id: 3, genre_id: 2)
+      expected_text = "Genres for this Song:"
 
       visit song_path(song_1)
 
       expect(page).to have_content(genre_1.name)
       expect(page).to have_content(genre_2.name)
+      expect(page).to have_content(expected_text)
       expect(page).to_not have_content(genre_3.name)
     end
   end

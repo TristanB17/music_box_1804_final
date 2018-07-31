@@ -22,6 +22,7 @@ describe 'an admin' do
       admin = User.create(username: 'Bobby', password: 'cheese', role: 1)
       genre_1 = Genre.create(name: 'Ya like jazz?')
       genre_2 = Genre.create(name: 'Speed Metal')
+      new_genre = "Beebop"
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -31,10 +32,12 @@ describe 'an admin' do
 
       expect(page).to have_field(:genre_name)
 
-      fill_in :genre_name, with: 'Beebop'
+      fill_in :genre_name, with: new_genre
       click_on 'Create Genre'
 
-      expect(page).to have_content('Beebop')
+      expect(page).to have_content(new_genre)
+      expect(page).to have_content(genre_1.name)
+      expect(page).to have_content(genre_2.name)
     end
   end
 end

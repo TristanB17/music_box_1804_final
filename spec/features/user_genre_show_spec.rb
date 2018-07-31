@@ -27,14 +27,19 @@ describe 'a user' do
       artist = Artist.create(name: 'some guy')
       song_1 = Song.create(title: 'Muh', length: 4, play_count: 78, artist_id: 1, rating: 3)
       song_2 = Song.create(title: 'Suh', length: 4, play_count: 78, artist_id: 1, rating: 5)
+      song_3 = Song.create(title: 'Wuh', length: 4, play_count: 78, artist_id: 1, rating: 5)
       genre = Genre.create(name: 'Ya like jazz?')
       song_genre_1 = SongGenre.create(song_id: 1, genre_id: 1)
       song_genre_2 = SongGenre.create(song_id: 2, genre_id: 1)
+      song_genre_3 = SongGenre.create(song_id: 3, genre_id: 2)
       expected_number = 4
 
       visit genre_path(genre)
 
       expect(page).to have_content("Average rating: #{expected_number}")
+      expect(page).to have_content(song_1.title)
+      expect(page).to have_content(song_2.title)
+      expect(page).to_not have_content(song_3.title)
     end
   end
 end

@@ -15,7 +15,7 @@ describe 'When a user adds a song to their cart' do
 
     expect(page).to have_content("You now have 2 copies of #{song.title} in your cart.")
   end
-  it 'should show cart total quantity' do
+  xit 'should show cart total quantity' do
     artist = Artist.create(name: 'Bieber')
     song = artist.songs.create(title: 'this is the song that never ends...', length: 135, play_count: 0)
 
