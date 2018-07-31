@@ -29,8 +29,6 @@ describe 'an admin' do
 
       click_on 'Create Song'
 
-      save_and_open_page
-
       expect(page).to have_field(:genre_name)
 
       fill_in :genre_name, with: 'Beebop'
