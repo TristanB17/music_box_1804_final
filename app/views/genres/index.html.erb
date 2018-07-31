@@ -1,0 +1,7 @@
+<% @genres.each do |genre| %>
+  <%= genre.name %>
+<% end %>
+
+<% if current_user.admin? %>
+<%= link_to 'Create Song', new_admin_genre_path %>
+<% end %>
