@@ -3,5 +3,12 @@
 <% end %>
 
 <% if current_admin? %>
-<%= link_to 'Create Song', new_admin_genre_path %>
+  <%= form_for [:admin, @genre] do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.submit %>
+
+  <% end %>
 <% end %>

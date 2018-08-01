@@ -13,6 +13,7 @@ describe 'a user' do
 
       expect(page).to have_content(genre_1.name)
       expect(page).to have_content(genre_2.name)
+      expect(page).to_not have_content('Create Genre')
     end
   end
 end
@@ -27,14 +28,13 @@ describe 'an admin' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit genres_path
-
-      click_on 'Create Song'
-
+      
       expect(page).to have_field(:genre_name)
 
       fill_in :genre_name, with: new_genre
       click_on 'Create Genre'
 
+      expect(current_path).to eq(genres_path)
       expect(page).to have_content(new_genre)
       expect(page).to have_content(genre_1.name)
       expect(page).to have_content(genre_2.name)
