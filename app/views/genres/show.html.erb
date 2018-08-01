@@ -1,6 +1,9 @@
 <%= @genre.name %>
 Average rating: <%= @genre.average_song_rating %>
 
+Highest song rating for <%= @genre.name %>: <%= @highest.title %>, <%= @highest.rating %>
+Lowest song rating for <%= @genre.name %>: <%= @lowest.title %>, <%= @lowest.rating %>
+
 <% @genre.songs.each do |song| %>
 <%= song.title %>
 <% end %>

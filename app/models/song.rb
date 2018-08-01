@@ -1,5 +1,7 @@
 class Song < ApplicationRecord
   validates_presence_of :title, :length, :play_count, :rating
+  validates :rating, numericality: {greater_than_or_equal_to: 0}
+  validates :rating, numericality: {less_than_or_equal_to: 5}
   belongs_to :artist
   has_many :playlist_songs
   has_many :playlists, through: :playlist_songs
@@ -15,5 +17,9 @@ class Song < ApplicationRecord
 
   def generate_slug
     self.slug = title.parameterize
+  end
+
+  def self.find_by_rating(song)
+    Song.where.not(title: song.title).where(rating: song.rating).limit(3)
   end
 end
