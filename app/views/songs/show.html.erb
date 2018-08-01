@@ -6,3 +6,12 @@
 <% @song.genres.each do |genre| %>
   <%= genre.name %>
 <% end %>
+
+Other songs with this rating
+<% if @same_rated.empty? == false %>
+  <% @same_rated.each do |song| %>
+    <%= song.title %>
+  <% end %>
+<% else %>
+  No songs found with this rating
+<% end %>
