@@ -9,5 +9,9 @@ class Genre < ApplicationRecord
 
   def highest_rated_song
     songs.order(rating: :desc).limit(1).first
-  end 
+  end
+
+  def lowest_rated_song
+    songs.order(rating: :asc).limit(1).first
+  end
 end

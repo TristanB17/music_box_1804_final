@@ -53,8 +53,8 @@ describe 'a user' do
 
       visit genre_path(genre)
 
-      expect(page).to have_content("Highest rating for #{genre.name}: #{song_1.title}, #{song_1.rating}")
-      expect(page).to have_content("Lowest rating for #{genre.name}: #{song_3.title}, #{song_3.rating}")
+      expect(page).to have_content("Highest song rating for #{genre.name}: #{song_1.title}, #{song_1.rating}")
+      expect(page).to have_content("Lowest song rating for #{genre.name}: #{song_3.title}, #{song_3.rating}")
     end
   end
 end
